@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import profileImg from '../assets/hero.png';
 
 export default function Hero() {
   const [typewriterText, setTypewriterText] = useState('');
@@ -8,7 +9,7 @@ export default function Hero() {
 
   // Typewriter effect
   useEffect(() => {
-    const roles = ['Software Developer', 'B.Voc IT Student', 'Flutter Developer', 'Web Developer'];
+    const roles = ['Software Developer', 'B.Voc IT Student', 'Flutter Developer', 'React Developer', 'Web Developer'];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -162,7 +163,21 @@ export default function Hero() {
             onMouseLeave={handleMouseLeave}
           >
             <div className="avatar-ring">
-              <div className="avatar-inner">👨‍💻</div>
+              <div className="avatar-inner">
+                <img
+                  src={profileImg}
+                  alt="Raj Chauhan"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                  }}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
             </div>
             <h3>Raj Chauhan</h3>
             <div className="role-tag">Software Developer</div>
