@@ -66,7 +66,7 @@ export default function Hero() {
             };
 
             animateCount(6, 'languages');
-            animateCount(2, 'projects');
+            animateCount(4, 'projects');
             animateCount(2025, 'year');
           }
         });
@@ -172,9 +172,6 @@ export default function Hero() {
                     height: '100%',
                     borderRadius: '50%',
                     objectFit: 'cover',
-                  }}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
                   }}
                 />
               </div>
