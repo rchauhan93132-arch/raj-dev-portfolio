@@ -162,11 +162,11 @@ export const portfolioData = {
         'Product search, category filtering, and detailed item views.',
         'Admin dashboard with store analytics & inventory controls.',
         'SharedPreferences local caching & responsive mobile UI.',
-        'Downloadable Android APK available for live testing on mobile phones.',
+        'Direct Android APK download available.',
       ],
       stack: ['Flutter', 'Dart', 'Provider', 'SharedPreferences', 'FL Chart'],
       demo: null,
-      apk: 'https://drive.google.com/file/d/1_YOUR_GOOGLE_DRIVE_APK_LINK/view?usp=sharing',
+      apk: 'https://github.com/rchauhan93132-arch/raj-dev-portfolio/releases/download/v1.0.0/ElectroHub_Electronics_Shop.apk',
     },
     {
       id: 'bill-generator',
