@@ -46,7 +46,7 @@ export default function ProjectModal({ project, onClose }) {
           {project.apk && (
             <a
               href={project.apk}
-              // download="ElectroHub_Electronics_Shop.apk"
+              download="ElectroHub_Electronics_Shop.apk"
               className="btn btn-primary"
             >
               Download APK 📲

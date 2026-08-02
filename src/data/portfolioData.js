@@ -166,7 +166,7 @@ export const portfolioData = {
       ],
       stack: ['Flutter', 'Dart', 'Provider', 'SharedPreferences', 'FL Chart'],
       demo: null,
-      apk: 'https://github.com/rchauhan93132-arch/raj-dev-portfolio/releases/download/v1.0.0/ElectroHub_Electronics_Shop.apk',
+      apk: '/ElectroHub_Electronics_Shop.apk',
     },
     {
       id: 'bill-generator',
