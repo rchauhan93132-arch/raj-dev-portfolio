@@ -61,6 +61,16 @@ export default function Projects({ onSelectProject }) {
                 >
                   View Details 🔍
                 </button>
+                {proj.apk && (
+                  <a
+                    href={proj.apk}
+                    download="ElectroHub_Electronics_Shop.apk"
+                    className="btn btn-primary"
+                    style={{ flex: 1, justifyContent: 'center' }}
+                  >
+                    Download APK 📲
+                  </a>
+                )}
                 {proj.demo && (
                   <a
                     href={proj.demo}

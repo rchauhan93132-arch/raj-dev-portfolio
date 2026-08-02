@@ -43,7 +43,16 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         <div className="modal-footer">
-          {project.demo ? (
+          {project.apk && (
+            <a
+              href={project.apk}
+              // download="ElectroHub_Electronics_Shop.apk"
+              className="btn btn-primary"
+            >
+              Download APK 📲
+            </a>
+          )}
+          {project.demo && (
             <a
               href={project.demo}
               target="_blank"
@@ -52,7 +61,8 @@ export default function ProjectModal({ project, onClose }) {
             >
               Live Demo 🔗
             </a>
-          ) : (
+          )}
+          {!project.demo && !project.apk && (
             <button className="btn btn-ghost" onClick={onClose}>
               Close Modal
             </button>

@@ -144,6 +144,7 @@ export const portfolioData = {
       ],
       stack: ['React.js', 'HTML5', 'CSS3', 'JavaScript', 'Web APIs'],
       demo: 'https://gentle-zabaione-6ffb65.netlify.app/',
+      apk: null,
     },
     {
       id: 'electrohub-flutter',
@@ -164,6 +165,7 @@ export const portfolioData = {
       ],
       stack: ['Flutter', 'Dart', 'Provider', 'SharedPreferences', 'FL Chart'],
       demo: null,
+      apk: null,
     },
     {
       id: 'bill-generator',
@@ -183,7 +185,8 @@ export const portfolioData = {
         'Print-optimized styling mode.',
       ],
       stack: ['React.js', 'JavaScript', 'CSS3', 'HTML5'],
-      demo: 'https://superb-lily-35a611.netlify.app/',
+      demo: 'https://dancing-valkyrie-2d9cd0.netlify.app/',
+      apk: null,
     },
     {
       id: 'portfolio',
@@ -204,6 +207,7 @@ export const portfolioData = {
       ],
       stack: ['React.js', 'Vite', 'HTML5', 'CSS3', 'JavaScript (ES6+)', 'Canvas API'],
       demo: null,
+      apk: null,
     },
   ],
   languagesSpoken: [
