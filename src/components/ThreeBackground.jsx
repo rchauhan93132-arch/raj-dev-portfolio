@@ -16,7 +16,7 @@ export default function ThreeBackground() {
       0.1,
       1000
     );
-    camera.position.z = 30;
+    camera.position.z = 32;
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -32,19 +32,19 @@ export default function ThreeBackground() {
     scene.add(mainGroup);
 
     // 1. Particle Constellation Field
-    const particleCount = 1200;
+    const particleCount = 1500;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
 
     const color1 = new THREE.Color(0x6366f1); // Indigo
-    const color2 = new THREE.Color(0x06b6d4); // Cyan
+    const color2 = new THREE.Color(0x00f2fe); // Cyan
     const color3 = new THREE.Color(0x10b981); // Emerald
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
-      const radius = 25 + Math.random() * 35;
+      const radius = 26 + Math.random() * 38;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
 
@@ -60,8 +60,10 @@ export default function ThreeBackground() {
       originalPositions[i3 + 1] = y;
       originalPositions[i3 + 2] = z;
 
-      // Interpolate colors
-      const mixedColor = Math.random() < 0.5 ? color1.clone().lerp(color2, Math.random()) : color2.clone().lerp(color3, Math.random());
+      const mixedColor =
+        Math.random() < 0.5
+          ? color1.clone().lerp(color2, Math.random())
+          : color2.clone().lerp(color3, Math.random());
       colors[i3] = mixedColor.r;
       colors[i3 + 1] = mixedColor.g;
       colors[i3 + 2] = mixedColor.b;
@@ -70,7 +72,7 @@ export default function ThreeBackground() {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Circle texture for smooth particles
+    // Glow Canvas Texture
     const canvas = document.createElement('canvas');
     canvas.width = 16;
     canvas.height = 16;
@@ -84,11 +86,11 @@ export default function ThreeBackground() {
     const particleTexture = new THREE.CanvasTexture(canvas);
 
     const material = new THREE.PointsMaterial({
-      size: 1.2,
+      size: 1.3,
       vertexColors: true,
       map: particleTexture,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -96,31 +98,31 @@ export default function ThreeBackground() {
     const particles = new THREE.Points(geometry, material);
     mainGroup.add(particles);
 
-    // 2. Wireframe Floating Geometric Ring / Torus
-    const torusGeometry = new THREE.TorusGeometry(12, 2.8, 16, 60);
+    // 2. Wireframe Torus Ring
+    const torusGeometry = new THREE.TorusGeometry(14, 3, 16, 60);
     const torusMaterial = new THREE.MeshBasicMaterial({
       color: 0x6366f1,
       wireframe: true,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.16,
     });
     const torusMesh = new THREE.Mesh(torusGeometry, torusMaterial);
-    torusMesh.position.set(10, -5, -8);
+    torusMesh.position.set(12, -6, -10);
     mainGroup.add(torusMesh);
 
-    // 3. Floating Icosahedron
-    const icoGeometry = new THREE.IcosahedronGeometry(7, 1);
+    // 3. Floating Wireframe Icosahedron
+    const icoGeometry = new THREE.IcosahedronGeometry(8, 1);
     const icoMaterial = new THREE.MeshBasicMaterial({
-      color: 0x06b6d4,
+      color: 0x00f2fe,
       wireframe: true,
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.2,
     });
     const icoMesh = new THREE.Mesh(icoGeometry, icoMaterial);
-    icoMesh.position.set(-12, 6, -6);
+    icoMesh.position.set(-14, 8, -8);
     mainGroup.add(icoMesh);
 
-    // Mouse tracking for 3D parallax
+    // Mouse Tracking for Parallax
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -133,14 +135,14 @@ export default function ThreeBackground() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    // Scroll tracking
+    // Scroll Tracking
     let scrollY = 0;
     const handleScroll = () => {
       scrollY = window.scrollY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Resize handler
+    // Resize Handler
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -149,32 +151,27 @@ export default function ThreeBackground() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation Loop
-    let clock = new THREE.Clock();
+    // Animation Frame Loop using performance.now() (Zero Console Warnings)
+    const startTime = performance.now();
     let animationFrameId;
 
-    const animate = () => {
+    const animate = (currentTime) => {
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (currentTime - startTime) * 0.001;
 
-      // Smooth mouse lerp
       targetX += (mouseX - targetX) * 0.05;
       targetY += (mouseY - targetY) * 0.05;
 
-      // Group rotation with mouse parallax and gentle auto spin
-      mainGroup.rotation.y = elapsedTime * 0.04 + targetX * 0.4;
-      mainGroup.rotation.x = targetY * 0.3;
+      mainGroup.rotation.y = elapsedTime * 0.04 + targetX * 0.45;
+      mainGroup.rotation.x = targetY * 0.35;
 
-      // Torus & Icosahedron animations
-      torusMesh.rotation.x = elapsedTime * 0.12;
-      torusMesh.rotation.y = elapsedTime * 0.18;
-      icoMesh.rotation.x = -elapsedTime * 0.15;
-      icoMesh.rotation.y = elapsedTime * 0.1;
+      torusMesh.rotation.x = elapsedTime * 0.14;
+      torusMesh.rotation.y = elapsedTime * 0.2;
+      icoMesh.rotation.x = -elapsedTime * 0.18;
+      icoMesh.rotation.y = elapsedTime * 0.12;
 
-      // Parallax camera depth based on scroll
       camera.position.y = -scrollY * 0.008;
 
-      // Particle wave animation
       const posAttr = geometry.attributes.position;
       const array = posAttr.array;
       for (let i = 0; i < particleCount; i++) {
@@ -183,17 +180,16 @@ export default function ThreeBackground() {
         const oy = originalPositions[i3 + 1];
         const oz = originalPositions[i3 + 2];
 
-        array[i3 + 1] = oy + Math.sin(elapsedTime * 1.5 + ox * 0.1) * 0.8;
-        array[i3] = ox + Math.cos(elapsedTime * 1.2 + oz * 0.1) * 0.6;
+        array[i3 + 1] = oy + Math.sin(elapsedTime * 1.6 + ox * 0.1) * 0.9;
+        array[i3] = ox + Math.cos(elapsedTime * 1.3 + oz * 0.1) * 0.7;
       }
       posAttr.needsUpdate = true;
 
       renderer.render(scene, camera);
     };
 
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', handleMouseMove);
