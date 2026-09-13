@@ -12,36 +12,54 @@ export default function Skills() {
 
   return (
     <section id="skills">
-      <div className="sec-label reveal">// tech_stack</div>
-      <div className="sec-title reveal">
-        My <span>Skills Matrix</span>
-      </div>
+      <div className="container">
+        <div className="sec-label">// tech_stack & capabilities</div>
+        <div className="sec-title">
+          Technical <span>Expertise</span>
+        </div>
 
-      {/* Skill Filter Tabs */}
-      <div className="filter-bar reveal">
-        {skillCategories.map((cat) => (
-          <button
-            key={cat.id}
-            className={`filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
-            onClick={() => setActiveCategory(cat.id)}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
+        {/* Category Filter Pills */}
+        <div className="skills-filter-container">
+          {skillCategories.map((cat) => (
+            <button
+              key={cat.id}
+              className={`filter-pill ${activeCategory === cat.id ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
 
-      <div className="skills-matrix-grid reveal active">
-        {filteredSkills.map((skill) => (
-          <div className="skill-tile" key={skill.name}>
-            <div className="skill-tile-top">
-              <span className="skill-tile-icon">{skill.icon}</span>
-              <span className={`skill-level-badge level-${skill.level.toLowerCase()}`}>
-                {skill.level}
-              </span>
-            </div>
-            <h4 className="skill-tile-name">{skill.name}</h4>
-          </div>
-        ))}
+        {/* Skills Grid */}
+        <div className="skills-grid">
+          {filteredSkills.map((skill) => {
+            const isIntermediate = skill.level === 'Intermediate';
+            const percentage = isIntermediate ? '75%' : '50%';
+
+            return (
+              <div className="skill-card" key={skill.name}>
+                <div className="skill-card-top">
+                  <div className="skill-icon">{skill.icon}</div>
+                  <span
+                    className={`skill-badge ${
+                      isIntermediate ? 'badge-intermediate' : 'badge-basic'
+                    }`}
+                  >
+                    {skill.level}
+                  </span>
+                </div>
+                <div className="skill-name">{skill.name}</div>
+                <div className="skill-progress-bar">
+                  <div
+                    className="skill-progress-fill"
+                    style={{ width: percentage }}
+                  ></div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

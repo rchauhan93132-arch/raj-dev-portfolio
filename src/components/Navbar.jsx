@@ -1,39 +1,80 @@
-export default function Navbar({ activeSection, isScrolled, onMobileToggle }) {
-  const navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Education', href: '#education' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
-  ];
+import { useState, useEffect } from 'react';
+
+export default function Navbar({ onToggleDrawer }) {
+  const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'about', 'skills', 'projects', 'education', 'contact'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav id="navbar" className={isScrolled ? 'scrolled' : ''}>
-      <a href="#" className="logo">
-        RAJ<span>.</span>
-      </a>
-      <div className="nav-right">
+    <div className="navbar-wrapper">
+      <nav className="navbar">
+        <a href="#hero" className="nav-brand">
+          <div className="nav-logo-badge">RC</div>
+          <span>Raj Chauhan</span>
+        </a>
+
         <ul className="nav-links">
-          {navItems.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                className={activeSection === item.href.replace('#', '') ? 'active-link' : ''}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          <li>
+            <a href="#about" className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}>
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#skills" className={`nav-item ${activeSection === 'skills' ? 'active' : ''}`}>
+              Skills
+            </a>
+          </li>
+          <li>
+            <a href="#projects" className={`nav-item ${activeSection === 'projects' ? 'active' : ''}`}>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#education" className={`nav-item ${activeSection === 'education' ? 'active' : ''}`}>
+              Education
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className={`nav-item ${activeSection === 'contact' ? 'active' : ''}`}>
+              Contact
+            </a>
+          </li>
         </ul>
-        <button
-          className="mobile-toggle"
-          id="mobileToggle"
-          aria-label="Open Navigation Menu"
-          onClick={onMobileToggle}
-        >
-          ☰
-        </button>
-      </div>
-    </nav>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <a href="#contact" className="nav-cta">
+            <span>Get in Touch</span>
+            <span>⚡</span>
+          </a>
+          <button
+            className="nav-toggle-btn"
+            onClick={onToggleDrawer}
+            aria-label="Toggle mobile navigation menu"
+          >
+            ☰
+          </button>
+        </div>
+      </nav>
+    </div>
   );
 }

@@ -3,155 +3,137 @@ import { portfolioData } from '../data/portfolioData';
 
 export default function Contact({ onShowToast }) {
   const { personal } = portfolioData;
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [copiedKey, setCopiedKey] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleCopy = (text, key) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    onShowToast && onShowToast(`Copied ${key} to clipboard! 📋`);
+    setTimeout(() => setCopiedKey(''), 2500);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      if (onShowToast) onShowToast('Please fill in all required fields! ⚠️');
+      onShowToast && onShowToast('Please fill out all fields! ⚠️');
       return;
     }
 
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      if (onShowToast) onShowToast('Message sent successfully! 🚀');
-    }, 800);
+    onShowToast && onShowToast('Thank you! Your message has been sent. 🚀');
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
     <section id="contact">
-      <div className="sec-label reveal">// get_in_touch</div>
-      <div className="sec-title reveal">
-        Contact <span>Me</span>
-      </div>
-      
-      <div className="contact-grid" style={{ marginBottom: '40px' }}>
-        <a href={`mailto:${personal.email}`} className="contact-card reveal">
-          <div className="cc-icon">📧</div>
-          <div>
-            <div className="cc-label">Email</div>
-            <div className="cc-val">{personal.email}</div>
-          </div>
-        </a>
-
-        <a href={`tel:+91${personal.phone}`} className="contact-card reveal">
-          <div className="cc-icon">📱</div>
-          <div>
-            <div className="cc-label">Phone</div>
-            <div className="cc-val">{personal.phone}</div>
-          </div>
-        </a>
-
-        <a
-          href={personal.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-card reveal"
-        >
-          <div className="cc-icon">🐙</div>
-          <div>
-            <div className="cc-label">GitHub</div>
-            <div className="cc-val">github.com/rajchauhan</div>
-          </div>
-        </a>
-
-        <a
-          href={personal.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-card reveal"
-        >
-          <div className="cc-icon">💼</div>
-          <div>
-            <div className="cc-label">LinkedIn</div>
-            <div className="cc-val">linkedin.com/in/rajchauhan</div>
-          </div>
-        </a>
-
-        <div className="contact-card reveal">
-          <div className="cc-icon">📍</div>
-          <div>
-            <div className="cc-label">Location</div>
-            <div className="cc-val">{personal.location}</div>
-          </div>
+      <div className="container">
+        <div className="sec-label">// let_connect</div>
+        <div className="sec-title">
+          Get In <span>Touch</span>
         </div>
 
-        <div className="contact-card reveal">
-          <div className="cc-icon">🎓</div>
+        <div className="contact-grid">
+          {/* Direct Channels */}
           <div>
-            <div className="cc-label">University</div>
-            <div className="cc-val">{personal.university} · B.Voc IT</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Interactive Quick Message Form */}
-      <div className="contact-form-container reveal">
-        <h3 className="contact-form-title">Send a Direct Message</h3>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name">Your Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Raj Patel"
-                required
-              />
+            <div className="touchpoint-row">
+              <div className="tp-info">
+                <span className="tp-icon">📧</span>
+                <div>
+                  <div className="tp-label">Email Address</div>
+                  <div className="tp-val">{personal.email}</div>
+                </div>
+              </div>
+              <button
+                className="copy-btn"
+                onClick={() => handleCopy(personal.email, 'Email')}
+              >
+                {copiedKey === 'Email' ? 'Copied! ✓' : 'Copy'}
+              </button>
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Your Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="name@example.com"
-                required
-              />
+
+            <div className="touchpoint-row">
+              <div className="tp-info">
+                <span className="tp-icon">📱</span>
+                <div>
+                  <div className="tp-label">Direct Phone / WhatsApp</div>
+                  <div className="tp-val">{personal.phone}</div>
+                </div>
+              </div>
+              <button
+                className="copy-btn"
+                onClick={() => handleCopy(personal.phone, 'Phone')}
+              >
+                {copiedKey === 'Phone' ? 'Copied! ✓' : 'Copy'}
+              </button>
+            </div>
+
+            <div className="touchpoint-row">
+              <div className="tp-info">
+                <span className="tp-icon">📍</span>
+                <div>
+                  <div className="tp-label">Location</div>
+                  <div className="tp-val">{personal.location}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-card" style={{ marginTop: '20px' }}>
+              <h4 style={{ color: '#fff', marginBottom: '8px' }}>Open for Full-Time &amp; Internship Roles</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                Looking to collaborate on real-world web applications, Flutter mobile development, or scalable software engineering projects.
+              </p>
             </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="subject">Subject</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              placeholder="Project Inquiry / Job Opportunity"
-            />
-          </div>
+          {/* Contact Message Form */}
+          <div className="contact-card">
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', color: '#fff' }}>
+              Send Direct Message
+            </h3>
 
-          <div className="form-group">
-            <label htmlFor="message">Message *</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Hello Raj, I'd like to talk about..."
-              required
-            ></textarea>
-          </div>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="form-label" htmlFor="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  className="form-input"
+                  placeholder="e.g. Alex Morgan"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
+              </div>
 
-          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message ✉️'}
-          </button>
-        </form>
+              <div className="form-group">
+                <label className="form-label" htmlFor="email">Your Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="form-input"
+                  placeholder="e.g. alex@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  className="form-textarea"
+                  placeholder="Tell me about your project or opportunity..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                ></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                <span>Transmit Message</span>
+                <span>⚡</span>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );
