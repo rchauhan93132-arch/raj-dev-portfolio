@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CYBER BENTO-GRID DEVELOPER PORTFOLIO - ADVANCED CSS
+   FUTURISTIC DEVELOPER BENTO GRID - MODERN ADVANCED CSS
    ========================================================================== */
 
 .app-container {
@@ -12,22 +12,22 @@
 .ambient-glow-1 {
   position: fixed;
   top: -10%;
-  left: 15%;
-  width: 55vw;
-  height: 55vw;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.14) 0%, rgba(0, 0, 0, 0) 70%);
+  left: 20%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
   z-index: 0;
-  filter: blur(70px);
+  filter: blur(80px);
 }
 
 .ambient-glow-2 {
   position: fixed;
-  bottom: 5%;
+  bottom: 10%;
   right: -5%;
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
   z-index: 0;
   filter: blur(90px);
@@ -39,10 +39,10 @@
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #6366f1, #00f2fe, #10b981);
+  background: linear-gradient(90deg, #00f0ff, #6366f1, #10b981);
   z-index: 9999;
   transition: width 0.1s ease-out;
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.8);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
 }
 
 /* Container Structure */
@@ -64,9 +64,9 @@ section {
   font-family: var(--font-mono);
   color: var(--cyan-neon);
   font-size: 0.85rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -75,18 +75,18 @@ section {
 .sec-label::before {
   content: '';
   display: inline-block;
-  width: 24px;
+  width: 20px;
   height: 2px;
   background: var(--cyan-neon);
   box-shadow: 0 0 8px var(--cyan-neon);
 }
 
 .sec-title {
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-size: clamp(2.3rem, 4.8vw, 3.4rem);
   font-weight: 800;
   margin-bottom: 50px;
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .sec-title span {
@@ -110,7 +110,7 @@ section {
 }
 
 .navbar {
-  background: rgba(8, 14, 28, 0.75);
+  background: rgba(6, 12, 28, 0.75);
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -140,14 +140,14 @@ section {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #00f2fe);
+  background: linear-gradient(135deg, #00f0ff, #6366f1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
   font-weight: 900;
-  color: #fff;
-  box-shadow: 0 0 16px rgba(0, 242, 254, 0.6);
+  color: #030712;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
 }
 
 .nav-links {
@@ -174,19 +174,19 @@ section {
 
 .nav-item.active {
   color: var(--cyan-neon);
-  background: rgba(0, 242, 254, 0.12);
-  border: 1px solid rgba(0, 242, 254, 0.3);
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 .nav-cta {
-  background: linear-gradient(135deg, #6366f1, #00f2fe);
-  color: #fff;
+  background: linear-gradient(135deg, #00f0ff, #6366f1);
+  color: #030712;
   padding: 9px 20px;
   border-radius: var(--radius-full);
   font-size: 0.88rem;
-  font-weight: 700;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  font-weight: 800;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -195,7 +195,7 @@ section {
 
 .nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
 }
 
 .nav-toggle-btn {
@@ -208,7 +208,7 @@ section {
 }
 
 /* ==========================================================================
-   HERO BENTO - DEVELOPER HUD
+   HERO BENTO - DEVELOPER COMMAND CENTER
    ========================================================================== */
 .hero {
   min-height: 100vh;
@@ -231,7 +231,7 @@ section {
   gap: 10px;
   padding: 6px 18px;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.35);
   font-size: 0.85rem;
   font-weight: 600;
@@ -258,7 +258,7 @@ section {
   font-size: clamp(2.8rem, 5.8vw, 4.4rem);
   font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   margin-bottom: 18px;
 }
 
@@ -325,14 +325,14 @@ section {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1, #00f2fe);
-  color: #fff;
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.45);
+  background: linear-gradient(135deg, #00f0ff, #6366f1);
+  color: #030712;
+  box-shadow: 0 10px 25px -5px rgba(0, 240, 255, 0.45);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 35px -5px rgba(0, 242, 254, 0.7);
+  box-shadow: 0 15px 35px -5px rgba(0, 240, 255, 0.7);
 }
 
 .btn-ghost {
@@ -347,7 +347,7 @@ section {
   border-color: var(--cyan-neon);
   color: var(--cyan-neon);
   transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
 }
 
 .social-links-row {
@@ -372,9 +372,9 @@ section {
 .social-icon-btn:hover {
   color: var(--cyan-neon);
   border-color: var(--cyan-neon);
-  background: rgba(0, 242, 254, 0.12);
+  background: rgba(0, 240, 255, 0.12);
   transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -408,7 +408,7 @@ section {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00f2fe, #6366f1, transparent);
+  background: linear-gradient(90deg, transparent, #00f0ff, #6366f1, transparent);
 }
 
 .avatar-container {
@@ -422,7 +422,7 @@ section {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #00f2fe, #10b981);
+  background: linear-gradient(135deg, #00f0ff, #6366f1, #10b981);
   animation: spinRing 8s linear infinite;
   filter: blur(6px);
   opacity: 0.85;
@@ -465,8 +465,8 @@ section {
   display: inline-block;
   padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: rgba(0, 242, 254, 0.1);
-  border: 1px solid rgba(0, 242, 254, 0.3);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
   color: var(--cyan-neon);
   font-family: var(--font-mono);
   font-size: 0.82rem;
@@ -491,7 +491,7 @@ section {
 
 .metric-tile:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 242, 254, 0.35);
+  border-color: rgba(0, 240, 255, 0.35);
   transform: translateY(-2px);
 }
 
@@ -528,7 +528,7 @@ section {
 }
 
 /* ==========================================================================
-   INTERACTIVE IDE CODE TERMINAL (ABOUT SECTION)
+   INTERACTIVE IDE TERMINAL (ABOUT SECTION)
    ========================================================================== */
 .about-grid {
   display: grid;
@@ -652,9 +652,9 @@ section {
 
 .filter-pill:hover, .filter-pill.active {
   color: #fff;
-  background: rgba(0, 242, 254, 0.15);
+  background: rgba(0, 240, 255, 0.15);
   border-color: var(--cyan-neon);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
 }
 
 .skills-grid {
@@ -677,8 +677,8 @@ section {
 .skill-card:hover {
   transform: translateY(-5px);
   background: rgba(18, 30, 62, 0.85);
-  border-color: rgba(0, 242, 254, 0.4);
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 242, 254, 0.2);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
 .skill-card-top {
@@ -701,9 +701,9 @@ section {
 }
 
 .badge-intermediate {
-  background: rgba(0, 242, 254, 0.15);
+  background: rgba(0, 240, 255, 0.15);
   color: #38bdf8;
-  border: 1px solid rgba(0, 242, 254, 0.35);
+  border: 1px solid rgba(0, 240, 255, 0.35);
 }
 
 .badge-basic {
@@ -762,14 +762,14 @@ section {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #6366f1, #00f2fe, #10b981);
+  background: linear-gradient(90deg, #00f0ff, #6366f1, #10b981);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(0, 242, 254, 0.4);
+  border-color: rgba(0, 240, 255, 0.4);
   box-shadow: var(--shadow-bento);
 }
 
@@ -921,7 +921,7 @@ section {
 
 .touchpoint-row:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 242, 254, 0.35);
+  border-color: rgba(0, 240, 255, 0.35);
 }
 
 .tp-info {
@@ -961,7 +961,7 @@ section {
 .copy-btn:hover {
   border-color: var(--cyan-neon);
   color: var(--cyan-neon);
-  background: rgba(0, 242, 254, 0.1);
+  background: rgba(0, 240, 255, 0.1);
 }
 
 .form-group {
@@ -991,8 +991,8 @@ section {
 .form-input:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--cyan-neon);
-  background: rgba(0, 242, 254, 0.05);
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+  background: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
 }
 
 .form-textarea {
@@ -1032,7 +1032,7 @@ section {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 254, 0.2);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.2);
 }
 
 .modal-close {
@@ -1119,7 +1119,7 @@ section {
   right: 30px;
   background: #091024;
   border: 1px solid var(--cyan-neon);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.35);
   padding: 14px 24px;
   border-radius: var(--radius-full);
   color: #fff;

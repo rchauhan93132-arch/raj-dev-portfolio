@@ -1,9 +1,36 @@
 import { useState } from 'react';
 import { portfolioData } from '../data/portfolioData';
 
-export default function About() {
+export default function About({ onShowToast }) {
   const { personal, highlights, languagesSpoken, strengths } = portfolioData;
   const [activeFile, setActiveFile] = useState('AboutMe.dart');
+  const [copied, setCopied] = useState(false);
+
+  const rawCode = {
+    'AboutMe.dart': `// Raj Chauhan - Software Developer Profile
+class Developer {
+  final String name = "${personal.name}";
+  final String degree = "B.Voc in Information Technology";
+  final String university = "${personal.university}";
+  final String location = "${personal.location}";
+  final String status = "${personal.status}";
+}`,
+    'Philosophy.py': `# Engineering & Architecture Philosophy
+def build_software():
+    principles = [
+        "Write clean, readable, and maintainable code.",
+        "User experience & 60fps performance first.",
+        "Continuous mastery of Flutter, Dart & React."
+    ]
+    return "Scalable Digital Impact"`,
+    'Strengths.json': `// Core Professional Attributes
+{
+  "curiosity": "Full-Stack & Flutter Mobile Engineering",
+  "learningSpeed": "Fast & Self-Motivated",
+  "problemSolving": "Systematic Logical Debugging",
+  "collaboration": "Clear Communication & Team Player"
+}`,
+  };
 
   const files = {
     'AboutMe.dart': [
@@ -37,6 +64,13 @@ export default function About() {
     ],
   };
 
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(rawCode[activeFile]);
+    setCopied(true);
+    onShowToast && onShowToast(`Copied ${activeFile} code to clipboard! 📋`);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
     <section id="about">
       <div className="container">
@@ -54,9 +88,18 @@ export default function About() {
                 <div className="ide-dot dot-yellow"></div>
                 <div className="ide-dot dot-green"></div>
               </div>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                VS Code · Raj Chauhan
-              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                  VS Code · Raj Chauhan
+                </span>
+                <button
+                  className="copy-btn"
+                  onClick={handleCopyCode}
+                  style={{ padding: '4px 10px', fontSize: '0.75rem' }}
+                >
+                  {copied ? 'Copied! ✓' : 'Copy Code 📋'}
+                </button>
+              </div>
             </div>
 
             <div className="ide-tabs">

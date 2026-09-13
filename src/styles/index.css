@@ -1,53 +1,55 @@
 /* ==========================================================================
-   GLOBAL CYBER DESIGN SYSTEM - RESETS & DESIGN TOKENS
+   FUTURISTIC OBSIDIAN & ELECTRIC NEON DESIGN SYSTEM
    ========================================================================== */
 
 :root {
   /* Surface & Background Colors */
-  --bg-deep: #02050e;
-  --bg-primary: #050a18;
-  --bg-surface-1: rgba(10, 17, 34, 0.7);
-  --bg-surface-2: rgba(16, 26, 52, 0.8);
-  --bg-card: rgba(12, 20, 42, 0.65);
-  --bg-card-hover: rgba(18, 30, 62, 0.85);
-  --bg-glass: rgba(8, 14, 28, 0.75);
+  --bg-deep: #030712;
+  --bg-primary: #060b19;
+  --bg-surface-1: rgba(10, 18, 38, 0.7);
+  --bg-surface-2: rgba(16, 28, 58, 0.85);
+  --bg-card: rgba(11, 20, 44, 0.65);
+  --bg-card-hover: rgba(18, 32, 68, 0.9);
+  --bg-glass: rgba(6, 12, 28, 0.75);
 
-  /* Neon Accent Palette */
-  --cyan-neon: #00f2fe;
-  --cyan-glow: rgba(0, 242, 254, 0.35);
+  /* Electric Neon Accents */
+  --cyan-neon: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.35);
   --indigo-neon: #6366f1;
   --indigo-glow: rgba(99, 102, 241, 0.35);
-  --violet-neon: #8b5cf6;
+  --violet-neon: #7c3aed;
+  --violet-glow: rgba(124, 58, 237, 0.35);
   --emerald-neon: #10b981;
   --emerald-glow: rgba(16, 185, 129, 0.35);
 
-  /* Typography Colors */
+  /* High-Contrast Typography */
   --text-white: #ffffff;
-  --text-primary: #f1f5f9;
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
   /* Borders & Glow Gradients */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 242, 254, 0.4);
-  --gradient-cyber: linear-gradient(135deg, #6366f1 0%, #00f2fe 50%, #10b981 100%);
-  --gradient-card-border: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(0, 242, 254, 0.3), rgba(16, 185, 129, 0.1));
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(0, 240, 255, 0.4);
+  --gradient-cyber: linear-gradient(135deg, #00f0ff 0%, #6366f1 50%, #10b981 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
 
   /* Typography Fonts */
-  --font-heading: 'Sora', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
 
   /* Radii & Shadows */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
-  --radius-xl: 30px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
-  --shadow-bento: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 242, 254, 0.12);
-  --shadow-glow-cyan: 0 0 25px rgba(0, 242, 254, 0.35);
-  --shadow-glow-indigo: 0 0 25px rgba(99, 102, 241, 0.35);
+  --shadow-bento: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.12);
+  --shadow-glow-cyan: 0 0 25px rgba(0, 240, 255, 0.4);
+  --shadow-glow-indigo: 0 0 25px rgba(99, 102, 241, 0.4);
 }
 
 *, *::before, *::after {
@@ -65,11 +67,15 @@ body {
   background-color: var(--bg-deep);
   color: var(--text-primary);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, #030712, #050a19);
+  background-size: 32px 32px, 100% 100%;
 }
 
 /* Custom Scrollbar */
@@ -91,7 +97,7 @@ body {
 /* Typography Helpers */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   font-weight: 700;
   color: var(--text-white);
 }
@@ -106,6 +112,6 @@ a {
 }
 
 ::selection {
-  background: rgba(0, 242, 254, 0.3);
+  background: rgba(0, 240, 255, 0.3);
   color: #fff;
 }
