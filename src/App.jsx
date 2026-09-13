@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import BackgroundCanvas from './components/BackgroundCanvas';
+import ThreeBackground from './components/ThreeBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -40,8 +40,8 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* 1. Ultra-Lightweight Hardware-Accelerated Canvas Mesh */}
-      <BackgroundCanvas />
+      {/* 1. Interactive Three.js 3D WebGL Canvas */}
+      <ThreeBackground />
 
       {/* 2. Ambient Cyber Glow Gradients */}
       <div className="ambient-glow-1"></div>
@@ -50,7 +50,7 @@ export default function App() {
       {/* 3. Top Scroll Progress Indicator */}
       <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
 
-      {/* 4. Floating Capsule Navbar */}
+      {/* 4. Floating Glass Navbar */}
       <Navbar onToggleDrawer={() => setIsDrawerOpen(true)} />
 
       {/* 5. Mobile Navigation Drawer */}
